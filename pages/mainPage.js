@@ -1,5 +1,4 @@
 module.exports = {
-    selector: 'body',
 
     commands: [{
         navigate: function ()  {
@@ -8,9 +7,9 @@ module.exports = {
         },
 
         openLoginPopup: function () {
-            let mainPage = this.page.mainPage(),
-                loginPopup = this.page.loginPopup();
-            mainPage.header = this.page.mainPage().section.header;
+            let mainPage = this.api.page.mainPage(),
+                loginPopup = this.api.page.loginPopup();
+            mainPage.header = this.api.page.mainPage().section.header;
 
             mainPage.header
                 .click('@loginButton');
@@ -20,16 +19,18 @@ module.exports = {
         },
 
         login: function (email, password) {
-            let mainPage = this.page.mainPage(),
-                customerOrdersPage = this.page.customerOrdersPage();
-            mainPage.header = this.page.mainPage().section.header;
-            customerOrdersPage.header = this.page.customerOrdersPage().section.header;
+            let mainPage = this.api.page.mainPage(),
+                loginPopup = this.api.page.loginPopup(),
+                customerOrdersPage = this.api.page.customerOrdersPage();
+            mainPage.header = this.api.page.mainPage().section.header;
+            customerOrdersPage.header = this.api.page.customerOrdersPage().section.header;
 
             mainPage
-                .openLoginPopup()
+                .openLoginPopup();
+            loginPopup
                 .setValue('@emailField', email)
                 .click('@continueButton')
-                .waitForElementVisible('@passwordField', 5000)
+                .waitForElementVisible('@passwordField')
                 .setValue('@passwordField', password)
                 .click('@loginButton');
             customerOrdersPage.header

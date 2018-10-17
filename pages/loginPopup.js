@@ -6,7 +6,6 @@
 //     navigateCommands = require('../common/commands/navigateCommands');
 
 module.exports = {
-    selector: 'body',
 
     commands: [{
 

@@ -1,14 +1,6 @@
 module.exports = {
-    selector: '#non_payment_popup',
-
     elements: {
-        popup: {
-            selector: '//div[contains(text(), "You already have")]',
-            locateStrategy: 'xpath'
-        },
-        placeNewOrderButton: {
-            selector: '//a[contains(text(), "Place")]',
-            locateStrategy: 'xpath'
-        }
+        popup: '#non_payment_popup',
+        placeNewOrderButton: '.js_popup_non_payment_new_order'
     }
 };

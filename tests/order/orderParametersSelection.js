@@ -15,10 +15,10 @@ module.exports = {
         // mainPage.header
         //     .click('@loginButton');
         // loginPopup
-        //     .waitForElementVisible('@popup', 5000)
+        //     .waitForElementVisible('@popup')
         //     .setValue('@emailField', 'iamcustomer@bigmir.net')
         //     .click('@continueButton')
-        //     .waitForElementVisible('@passwordField', 5000)
+        //     .waitForElementVisible('@passwordField')
         //     .setValue('@passwordField', 'custom546')
         //     .click('@loginButton');
         // customerOrdersPage.header
@@ -27,7 +27,7 @@ module.exports = {
         // customerOrdersPage
         //     .click('@placeOrderButton');
         // unpaidOrdersPopup
-        //     .waitForElementVisible('@popup', 5000)
+        //     .waitForElementVisible('@popup')
         //     .click('@placeNewOrderButton', res => {console.log(res)});
         // в случае если метод по какой-то причине не произвел ожидаемое действие,
         // необходимо последним параметром передать callback функцию для вывода результата выполнения
@@ -41,6 +41,10 @@ module.exports = {
             .login('iamcustomer@bigmir.net','custom546');
         customerOrdersPage
             .openCreateOrderPage();
+    },
+
+    after: (browser) => {
+        browser.end(); // после выполнения всего сценария закроем браузер
     },
 
     'Пользователь изменил поле заказа: Type of paper': (browser) => {
